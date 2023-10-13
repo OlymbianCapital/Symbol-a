@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Foogra - Discover & Book the best restaurants at the best price">
+    <meta name="author" content="Ansonika">
+    <title>Foogra - Discover & Book the best restaurants at the best price</title>
+
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="{{url_for('static', filename='img/favicon.ico')}}" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="{{url_for('static', filename='img/apple-touch-icon-57x57-precomposed.png')}}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{url_for('static', filename='img/apple-touch-icon-72x72-precomposed.png')}}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{url_for('static', filename='img/apple-touch-icon-114x114-precomposed.png')}}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{url_for('static', filename='img/apple-touch-icon-144x144-precomposed.png')}}">
+
+     <!-- GOOGLE WEB FONT -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- BASE CSS -->
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+
+    <!-- SPECIFIC CSS -->
+    <link href="{{url_for('static', filename='css/home.css')}}" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="{{url_for('static', filename='css/custom.css')}}" rel="stylesheet">
+</head>
+<body>
+<div>
+{% include 'index/navbar.html' %}
+</div>			
+	<!-- /header -->
+	<main>
+		<div class="hero_single version_2">
+			<div class="opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.6)">
+				<div class="container">
+					<div class="row justify-content-center">
+						<!--<div class="col-xl-9 col-lg-10 col-md-8">
+							<h1>Ανακάλυψε εστιατόρια και κάνε κράτηση</h1>
+							<p>Ανακάλυψε εστιατόρια και κάνε κράτηση</p>
+						</div>-->
+					</div>
+					<!-- /row -->
+				</div>
+			</div>
+		</div>	
+		<!-- /hero_single -->
+				<!-- /container -->
+
+	<div class="container">
+		<p></p>
+{% include 'index/search.html' %}
+<p></p>
+	</div>
+		{% include 'index/cousines.html' %}
+		<div class="container margin_60_40">
+			<div class="main_title">
+				<span><em></em></span>
+				<h2>12outΤα καλύτερα ιταλικά εστιατόρια</h2>
+				<p>Ανακαλύψτε τα top εστιατόρια της εβδομάδας.</p>
+				<a href="./grid-listing-filterscol.php">Δείτε τα όλα</a>
+			</div>
+			<div class="owl-carousel owl-theme carousel_4">
+				{% for slider_elem in slider_elements %}
+				<div class="item">
+				<div class="strip">
+					<figure>
+						<!-- <span class="ribbon off">-30%</span> -->
+						<img src="{{ url_for('static', filename=slider_elem[1]) }}" data-src="{{ url_for('static', filename=slider_elem[1]) }}" class="owl-lazy" alt="">
+						<a href="detail-restaurant.php" class="strip_info">
+							<small>{{slider_elem[4]}}</small>
+							<div class="item_title">
+								<h3>{{slider_elem[0]}}</h3>
+								<small>{{slider_elem[5]}}</small>
+							</div>
+						</a>
+					</figure>
+					<ul>
+						<li><span class="loc_open">Ανοιχτά Τώρα</span></li>
+						<li>
+							<div class="score"><span>{{slider_elem[6]}}</span></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+				{% endfor %}
+			</div>
+		</div>
+		<!--Sliders-->
+		<!-- /container -->
+		<div class="call_section lazy" data-bg="url(img/owner.jpg)">
+		    <div class="container clearfix">
+		        <div class="col-lg-5 col-md-6 float-end wow">
+		            <div class="box_1">
+		                <h3>Είστε ιδιοκτήτης;</h3>
+		                <p>Μπείτε στο μεγαλύτερο site εστιατορίων στην Ελλάδα</p>
+		                <a href="./submit-restaurant.php" class="btn_1">Ενδιαφέρομαι για συνεργασία</a>
+		            </div>
+		        </div>
+    		</div>
+    	</div>
+   		<!--/call_section-->
+		
+	</main>
+	<!-- /main -->
+
+	{% include 'index/footer.html' %}
+	<!--/footer-->
+
+	<div id="toTop"></div><!-- Back to top button -->
+	
+	<div class="layer"></div><!-- Opacity Mask Menu Mobile -->
+	
+	<!-- Sign In Modal -->
+	<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+		<div class="modal_header">
+			<h3>Sign In</h3>
+		</div>
+		<form>
+			<div class="sign-in-wrapper">
+				<a href="#0" class="social_bt facebook">Login with Facebook</a>
+				<a href="#0" class="social_bt google">Login with Google</a>
+				<div class="divider"><span>Or</span></div>
+				<div class="form-group">
+					<label>Email</label>
+					<input type="email" class="form-control" name="email" id="email">
+					<i class="icon_mail_alt"></i>
+				</div>
+				<div class="form-group">
+					<label>Password</label>
+					<input type="password" class="form-control" name="password" id="password" value="">
+					<i class="icon_lock_alt"></i>
+				</div>
+				<div class="clearfix add_bottom_15">
+					<div class="checkboxes float-start">
+						<label class="container_check">Remember me
+						  <input type="checkbox">
+						  <span class="checkmark"></span>
+						</label>
+					</div>
+					<div class="float-end"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
+				</div>
+				<div class="text-center">
+					<input type="submit" value="Log In" class="btn_1 full-width mb_5">
+					Don’t have an account? <a href="account.html">Sign up</a>
+				</div>
+				<div id="forgot_pw">
+					<div class="form-group">
+						<label>Please confirm login email below</label>
+						<input type="email" class="form-control" name="email_forgot" id="email_forgot">
+						<i class="icon_mail_alt"></i>
+					</div>
+					<p>You will receive an email containing a link allowing you to reset your password to a new preferred one.</p>
+					<div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
+				</div>
+			</div>
+		</form>
+		<!--form -->
+	</div>
+	<!-- /Sign In Modal -->
+	
+	<!-- COMMON SCRIPTS -->
+    <script src="{{url_for('static', filename='js/common_scripts.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/common_func.js')}}"></script>
+    <script src="{{url_for('static', filename='js/assets/validate.js')}}"></script>
+
+</body>
+</html>
